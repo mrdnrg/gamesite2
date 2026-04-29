@@ -30,18 +30,19 @@
    THEME
    ========================= */
 :root{
-  --bg:#0E0A16;            
-  --bg-deep:#0A0810;       
-  --violet-1:#6A00FF;      
-  --violet-2:#B300FF;      
-  --violet-3:#3E1B74;      
-  --gold:#FFCC00;          
-  --gold-2:#FFB100;        
-  --ink:#FFFFFF;
-  --muted:#C9C4D6;
-  --card-glass:rgba(255,255,255,0.06);
-  --card-stroke:rgba(255,255,255,0.12);
-  --shadow:0 10px 30px rgba(0,0,0,.45);
+  /* Behind The Mask — warm dark palette */
+  --bg:#1A120C;
+  --bg-deep:#0E0805;
+  --violet-1:#8A4A2E;      /* deep terracotta (was purple) */
+  --violet-2:#C97B5C;      /* peach accent (was magenta) */
+  --violet-3:#5A2E1C;      /* cocoa */
+  --gold:#E8DCC8;          /* cream — primary light (was yellow) */
+  --gold-2:#D4B896;        /* warm sand */
+  --ink:#F2E8D8;
+  --muted:#A89684;
+  --card-glass:rgba(232,220,200,0.045);
+  --card-stroke:rgba(232,220,200,0.14);
+  --shadow:0 10px 30px rgba(0,0,0,.55);
 }
 
 /* =========================
@@ -64,8 +65,8 @@ html, body {
 
 .bg-root{
   background:
-    radial-gradient(1200px 800px at 50% -10%, rgba(179,0,255,.25), transparent 60%),
-    radial-gradient(900px 600px at 50% 120%, rgba(106,0,255,.18), transparent 60%),
+    radial-gradient(1200px 800px at 50% -10%, rgba(232,155,124,.18), transparent 60%),
+    radial-gradient(900px 600px at 50% 120%, rgba(201,123,92,.14), transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
 }
 
@@ -77,11 +78,11 @@ html, body {
   animation: auraMove 16s ease-in-out infinite alternate;
 }
 .bg-auras:before{
-  background: radial-gradient(closest-side, rgba(179,0,255,.55), transparent 70%);
+  background: radial-gradient(closest-side, rgba(232,155,124,.45), transparent 70%);
   left:-15vmax; top:-10vmax;
 }
 .bg-auras:after{
-  background: radial-gradient(closest-side, rgba(106,0,255,.55), transparent 70%);
+  background: radial-gradient(closest-side, rgba(138,74,46,.5), transparent 70%);
   right:-12vmax; bottom:-10vmax; animation-delay: 1.2s;
 }
 @keyframes auraMove{
@@ -143,14 +144,14 @@ html, body {
   margin:0; font-weight:800; line-height:1.05;
   font-size: clamp(34px, 6vw, 64px);
   letter-spacing:.02em;
-  background: linear-gradient(90deg, var(--gold) 0%, #FFF6BF 35%, var(--gold-2) 70%, var(--gold) 100%);
+  background: linear-gradient(90deg, #E8DCC8 0%, #F2E2C9 35%, #D4B896 70%, #E8DCC8 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  text-shadow: 0 0 24px rgba(255,204,0,.12);
+  text-shadow: 0 0 24px rgba(232,220,200,.10);
   animation: titleGlow 3.5s ease-in-out infinite;
 }
 @keyframes titleGlow{
-  0%,100%{ filter: drop-shadow(0 0 12px rgba(255,204,0,.18)); }
-  50%{ filter: drop-shadow(0 0 22px rgba(255,204,0,.34)); }
+  0%,100%{ filter: drop-shadow(0 0 12px rgba(232,220,200,.14)); }
+  50%{ filter: drop-shadow(0 0 22px rgba(201,123,92,.28)); }
 }
 
 
@@ -186,7 +187,7 @@ html, body {
 }
 #centerRight h3{
   margin:4px 0 10px;
-  font-size:14px; letter-spacing:.12em; color: var(--gold); text-transform: uppercase;
+  font-size:14px; letter-spacing:.12em; color: var(--violet-2); text-transform: uppercase;
 }
 #centerRight label{
   font-size:16px; display:flex; gap:10px; align-items:center; margin:10px 0; color:var(--ink);
@@ -210,17 +211,17 @@ html, body {
 
 .menuButton{
   background: linear-gradient(135deg, var(--violet-1) 0%, var(--violet-2) 100%);
-  color:#fff; box-shadow: 0 8px 20px rgba(179,0,255,.25);
+  color:#fff; box-shadow: 0 8px 20px rgba(138,74,46,.35);
 }
-.menuButton:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(179,0,255,.35);}
+.menuButton:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(201,123,92,.45);}
 .menuButton:active{ transform: translateY(0); }
 
 
 .buyButton{
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-2) 100%);
-  color:#1A1200; box-shadow: 0 8px 20px rgba(255,204,0,.25);
+  color:#1A1208; box-shadow: 0 8px 20px rgba(212,184,150,.28);
 }
-.buyButton:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(255,204,0,.35); }
+.buyButton:hover{ transform: translateY(-1px); box-shadow: 0 12px 28px rgba(232,220,200,.4); }
 .buyButton:active{ transform: translateY(0); }
 
 
@@ -237,12 +238,13 @@ html, body {
 
 .goButton, #recordsContent button, #gameMenuButton, #fullscreenButton{
   width:auto; border-radius:12px; padding:10px 14px; font-weight:600; font-size:16px;
-  background: linear-gradient(135deg, #5B5B6B, #8B8B9A);
-  color:#fff;
+  background: linear-gradient(135deg, #3A2A20, #5A4233);
+  color:#F2E8D8;
+  border: 1px solid rgba(232,220,200,.15);
 }
 .goButton:hover, #recordsContent button:hover, #gameMenuButton:hover, #fullscreenButton:hover{
-  background: linear-gradient(135deg, #FF9A7A, #FFCC99);
-  color:#000;
+  background: linear-gradient(135deg, #C97B5C, #E8B89A);
+  color:#1A1208;
 }
 
 /* =========================
@@ -276,7 +278,8 @@ html, body {
   background: rgba(0,0,0,.78);
 }
 #inGameMenuOverlay .menuBox, #summaryOverlay .overlayContent, #gameOverContent, #loginContent, #recordsContent{
-  background:#0A0A0A; border-radius:16px; border:1px solid var(--card-stroke);
+  background: linear-gradient(180deg, #1F1610 0%, #150D08 100%);
+  border-radius:16px; border:1px solid var(--card-stroke);
   box-shadow:var(--shadow);
 }
 
@@ -292,7 +295,7 @@ html, body {
   background: rgba(255,255,255,.05); color:var(--ink);
 }
 #loginContent input:focus{
-  border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,204,0,.18);
+  border-color: var(--violet-2); box-shadow: 0 0 0 3px rgba(201,123,92,.22);
 }
 
 
@@ -316,7 +319,7 @@ html, body {
   padding:22px; text-align:center; width:min(420px, 92vw);
 }
 #inGameMenuOverlay .menuBox h3{
-  margin:12px 0 6px; font-size:14px; color:var(--gold); letter-spacing:.12em; text-transform:uppercase;
+  margin:12px 0 6px; font-size:14px; color:var(--violet-2); letter-spacing:.12em; text-transform:uppercase;
 }
 #inGameMenuOverlay .menuBox label{ display:flex; align-items:center; gap:10px; margin:8px 0; font-size:16px; }
 #inGameMenuOverlay .menuBox input[type="checkbox"]{ width:18px; height:18px; accent-color: var(--violet-2); }
@@ -367,19 +370,19 @@ html, body {
   position:absolute; top:5%; left:50%; transform:translateX(-50%);
   width:min(980px, 94vw); max-height:90%; padding:18px; overflow-y:auto; display:flex; flex-direction:column;
 }
-.stickyHeader{ position:sticky; top:0; background:#0A0A0A; z-index:10; padding-bottom:8px; text-align:center; }
+.stickyHeader{ position:sticky; top:0; background:#150D08; z-index:10; padding-bottom:8px; text-align:center; }
 .stickyHeader h2{ margin:10px 0; }
 #walletSearch{
-  background:#1A1A1A; color:#FFFFFF; border:1px solid var(--card-stroke);
+  background:#251A12; color:var(--ink); border:1px solid var(--card-stroke);
   border-radius:10px; padding:10px 12px; font-size:16px; outline:none; width:100%; box-sizing:border-box;
 }
-#walletSearch:focus{ border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,204,0,.18); }
+#walletSearch:focus{ border-color:var(--violet-2); box-shadow:0 0 0 3px rgba(201,123,92,.22); }
 
 #recordsContent table{ width:100%; border-collapse:collapse; margin-top:12px; }
 #recordsContent th, #recordsContent td{ padding:10px; border:1px solid rgba(255,255,255,.12); text-align:left; }
 #recordsContent th{
-  background: linear-gradient(135deg, #8A86A0, #5F5C74);
-  color:#0F0D18;
+  background: linear-gradient(135deg, #C97B5C, #8A4A2E);
+  color:#F2E8D8;
 }
 
 
@@ -514,7 +517,7 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
     <button id="loginCloseIcon" aria-label="Close">✕</button>
     <h2>Enter your EVM wallet</h2>
     <p style="font-size: 13px; color: var(--muted); margin: 4px 0 10px;">
-  Top&nbsp;100 players will get a <span style="color: var(--gold); font-weight: 600;">GTD spot</span> — enter your wallet to participate!
+  Top&nbsp;100 players will get a <span style="color: var(--violet-2); font-weight: 600;">GTD spot</span> — enter your wallet to participate!
 </p>
     <input id="walletInput" type="text" placeholder="0x... (42 chars)" maxlength="42" />
     <div style="margin-top:10px;">

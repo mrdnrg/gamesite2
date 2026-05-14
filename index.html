@@ -177,50 +177,162 @@ html, body {
 
 #centerSection{
   display:flex; gap:28px; align-items:stretch; justify-content:center; flex-wrap:wrap;
+  width:min(1280px, 96vw);
 }
 #centerLeft{ display:flex; flex-direction:column; gap:12px; }
 
 
 #centerRight{
-  width:min(440px, 92vw);
+  width:min(360px, 92vw);
   padding:18px 18px 14px;
 }
 
 #howToPlayCard{
-  width:min(360px, 92vw);
-  padding:18px;
+  width:min(720px, 94vw);
+  padding:20px;
   text-align:left;
+  position:relative;
+  overflow:hidden;
+}
+
+#howToPlayCard::before{
+  content:"";
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(520px 220px at 50% 0%, rgba(232,220,200,.10), transparent 70%),
+    linear-gradient(135deg, rgba(201,123,92,.09), transparent 45%);
+}
+
+.how-to-header{
+  position:relative; z-index:1;
+  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  margin-bottom:14px;
 }
 
 #howToPlayCard h2{
-  margin:0 0 10px;
-  font-size:14px;
+  margin:0 0 6px;
+  font-size:18px;
   letter-spacing:.12em;
-  color:var(--violet-2);
+  color:var(--gold);
   text-transform:uppercase;
 }
 
-.how-to-list{
-  margin:0 0 14px;
-  padding-left:18px;
+.how-to-subtitle{
+  margin:0;
   color:var(--muted);
   font-size:14px;
-  line-height:1.45;
+  line-height:1.35;
+}
+
+.how-to-list{
+  position:relative; z-index:1;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:8px 14px;
+  margin:0 0 16px;
+  padding:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.35;
+  list-style:none;
 }
 
 .how-to-list li{
-  margin:5px 0;
+  margin:0;
+  padding:9px 10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(232,220,200,.10);
+}
+
+.video-shell{
+  position:relative; z-index:1;
+  border-radius:18px;
+  overflow:hidden;
+  background:#0E0805;
+  border:1px solid rgba(232,220,200,.18);
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
 }
 
 #howToVideo{
   display:block;
   width:100%;
-  max-height:220px;
-  border-radius:14px;
+  height:auto;
+  max-height:430px;
+  aspect-ratio:16/9;
   object-fit:cover;
   background:#0E0805;
-  border:1px solid rgba(232,220,200,.14);
-  box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
+
+.video-actions{
+  position:absolute;
+  left:12px; right:12px; bottom:12px;
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+  pointer-events:none;
+}
+
+.video-action-btn{
+  pointer-events:auto;
+  border:none;
+  border-radius:999px;
+  padding:9px 13px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.04em;
+  color:#1A1208;
+  background:linear-gradient(135deg, var(--gold), var(--gold-2));
+  box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+
+.video-action-btn:hover{
+  transform:translateY(-1px);
+}
+
+#videoModal{
+  position:fixed; inset:0;
+  z-index:2000;
+  display:none;
+  align-items:center; justify-content:center;
+  padding:24px;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(8px);
+}
+
+#videoModal.open{ display:flex; }
+
+.video-modal-box{
+  width:min(1180px, 96vw);
+  position:relative;
+}
+
+#howToVideoLarge{
+  display:block;
+  width:100%;
+  max-height:84vh;
+  border-radius:20px;
+  object-fit:contain;
+  background:#050302;
+  border:1px solid rgba(232,220,200,.22);
+  box-shadow:0 20px 60px rgba(0,0,0,.75);
+}
+
+#closeVideoModal{
+  position:absolute;
+  top:-14px; right:-14px;
+  width:42px; height:42px;
+  border:none; border-radius:50%;
+  cursor:pointer;
+  background:linear-gradient(135deg, #ff5a5a, #ff8a7a);
+  color:#fff;
+  font-size:20px; font-weight:900;
+  box-shadow:0 10px 22px rgba(0,0,0,.45);
+}
+
+@media (max-width: 760px){
+  .how-to-header{ flex-direction:column; }
+  .how-to-list{ grid-template-columns:1fr; }
+  #howToVideo{ max-height:320px; }
 }
 #centerRight h3{
   margin:4px 0 10px;
@@ -597,18 +709,30 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
       </div>
 
       <div id="howToPlayCard" class="card">
-        <h2>HOW TO PLAY:</h2>
+        <div class="how-to-header">
+          <div>
+            <h2>HOW TO PLAY:</h2>
+            <p class="how-to-subtitle">Watch the quick guide, collect keys, recharge with clocks, and survive the 60-second challenge.</p>
+          </div>
+        </div>
+
         <ol class="how-to-list">
-          <li>Move around the map using edge scroll, WASD / Arrow Keys, or right-click drag.</li>
+          <li>Move with edge scroll, WASD / Arrow Keys, or right-click drag.</li>
           <li>Collect keys to score points.</li>
           <li>Pick up clocks to recharge your flashlight.</li>
-          <li>Survive the 60-second challenge and climb the leaderboard.</li>
+          <li>Survive 60 seconds and climb the leaderboard.</li>
         </ol>
 
-        <video id="howToVideo" autoplay muted loop playsinline preload="metadata">
-          <source src="how-to-play.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div class="video-shell">
+          <video id="howToVideo" autoplay muted loop playsinline preload="metadata">
+            <source src="how-to-play.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-actions">
+            <button id="btnVideoSound" class="video-action-btn" type="button">SOUND ON</button>
+            <button id="btnVideoExpand" class="video-action-btn" type="button">EXPAND VIDEO</button>
+          </div>
+        </div>
       </div>
 
       <div id="centerRight" class="card">
@@ -622,6 +746,17 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
 
   
   <canvas id="gameCanvas"></canvas>
+
+
+  <div id="videoModal" aria-hidden="true">
+    <div class="video-modal-box">
+      <button id="closeVideoModal" type="button" aria-label="Close video">✕</button>
+      <video id="howToVideoLarge" loop playsinline preload="metadata">
+        <source src="how-to-play.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
   
   <div id="gameOverOverlay">
@@ -664,6 +799,72 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
       const el = document.getElementById(id);
       if(!el) return;
       el.addEventListener('pointerdown', ()=>{ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+    });
+
+    const howToVideo = document.getElementById('howToVideo');
+    const howToVideoLarge = document.getElementById('howToVideoLarge');
+    const btnVideoSound = document.getElementById('btnVideoSound');
+    const btnVideoExpand = document.getElementById('btnVideoExpand');
+    const videoModal = document.getElementById('videoModal');
+    const closeVideoModal = document.getElementById('closeVideoModal');
+
+    function syncVideoSound(muted){
+      [howToVideo, howToVideoLarge].forEach(video=>{
+        if(!video) return;
+        video.muted = muted;
+        video.volume = muted ? 0 : 1;
+      });
+      if(btnVideoSound) btnVideoSound.textContent = muted ? 'SOUND ON' : 'SOUND OFF';
+    }
+
+    async function playVideo(video){
+      if(!video) return;
+      try{ await video.play(); }catch(e){}
+    }
+
+    if(howToVideo){
+      howToVideo.muted = true;
+      playVideo(howToVideo);
+    }
+
+    if(btnVideoSound){
+      btnVideoSound.addEventListener('click', ()=>{
+        const shouldMute = !howToVideo.muted;
+        syncVideoSound(shouldMute);
+        playVideo(howToVideo);
+        if(videoModal && videoModal.classList.contains('open')) playVideo(howToVideoLarge);
+      });
+    }
+
+    if(btnVideoExpand){
+      btnVideoExpand.addEventListener('click', ()=>{
+        if(!videoModal || !howToVideoLarge) return;
+        videoModal.classList.add('open');
+        videoModal.setAttribute('aria-hidden','false');
+        howToVideoLarge.currentTime = howToVideo ? howToVideo.currentTime : 0;
+        howToVideoLarge.muted = howToVideo ? howToVideo.muted : true;
+        howToVideoLarge.volume = howToVideoLarge.muted ? 0 : 1;
+        playVideo(howToVideoLarge);
+      });
+    }
+
+    function closeExpandedVideo(){
+      if(!videoModal || !howToVideoLarge) return;
+      if(howToVideo) howToVideo.currentTime = howToVideoLarge.currentTime;
+      howToVideoLarge.pause();
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden','true');
+      playVideo(howToVideo);
+    }
+
+    if(closeVideoModal) closeVideoModal.addEventListener('click', closeExpandedVideo);
+    if(videoModal){
+      videoModal.addEventListener('click', (e)=>{
+        if(e.target === videoModal) closeExpandedVideo();
+      });
+    }
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && videoModal && videoModal.classList.contains('open')) closeExpandedVideo();
     });
   </script>
 

@@ -176,15 +176,32 @@ html, body {
 
 
 #centerSection{
-  display:flex; gap:28px; align-items:stretch; justify-content:center; flex-wrap:wrap;
+  display:flex; gap:28px; align-items:flex-start; justify-content:center; flex-wrap:wrap;
   width:min(1280px, 96vw);
 }
-#centerLeft{ display:flex; flex-direction:column; gap:12px; }
+#centerLeft{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:min(300px, 92vw);
+}
+#centerLeft .menuButton,
+#centerLeft .buyButton{
+  width:100%;
+  box-sizing:border-box;
+}
 
 
 #centerRight{
-  width:min(360px, 92vw);
+  width:100%;
   padding:18px 18px 14px;
+  box-sizing:border-box;
+  text-align:left;
+  margin-top:10px;
+}
+
+#centerLeft .websiteButton{
+  margin-top:10px;
 }
 
 #howToPlayCard{
@@ -206,11 +223,11 @@ html, body {
 .how-to-header{
   position:relative; z-index:1;
   display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 
 #howToPlayCard h2{
-  margin:0 0 6px;
+  margin:0;
   font-size:18px;
   letter-spacing:.12em;
   color:var(--gold);
@@ -705,14 +722,21 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
       <div id="centerLeft">
         <button id="btnStart" class="menuButton">Start Game</button>
         <button id="btnRecords" class="menuButton">Leaderboard</button>
-        <a href="https://www.secret-society.cc/" target="_blank" class="buyButton">Secret Society Website</a>
+
+        <div id="centerRight" class="card">
+          <h3>MOVEMENT SETTINGS</h3>
+          <label><input type="checkbox" id="cbEdgePanMain" checked> Edge scroll</label>
+          <label><input type="checkbox" id="cbKeyboardPanMain" checked> Keyboard (WASD / Arrow Keys)</label>
+          <label><input type="checkbox" id="cbRightDragPanMain" checked> Right-click drag</label>
+        </div>
+
+        <a href="https://www.secret-society.cc/" target="_blank" class="buyButton websiteButton">Secret Society Website</a>
       </div>
 
       <div id="howToPlayCard" class="card">
         <div class="how-to-header">
           <div>
             <h2>HOW TO PLAY:</h2>
-            <p class="how-to-subtitle">Watch the quick guide, collect keys, recharge with clocks, and survive the 60-second challenge.</p>
           </div>
         </div>
 
@@ -735,12 +759,6 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
         </div>
       </div>
 
-      <div id="centerRight" class="card">
-        <h3>MOVEMENT SETTINGS</h3>
-        <label><input type="checkbox" id="cbEdgePanMain" checked> Edge scroll</label>
-        <label><input type="checkbox" id="cbKeyboardPanMain" checked> Keyboard (WASD / Arrow Keys)</label>
-        <label><input type="checkbox" id="cbRightDragPanMain" checked> Right-click drag</label>
-      </div>
     </div>
   </div>
 

@@ -185,6 +185,43 @@ html, body {
   width:min(440px, 92vw);
   padding:18px 18px 14px;
 }
+
+#howToPlayCard{
+  width:min(360px, 92vw);
+  padding:18px;
+  text-align:left;
+}
+
+#howToPlayCard h2{
+  margin:0 0 10px;
+  font-size:14px;
+  letter-spacing:.12em;
+  color:var(--violet-2);
+  text-transform:uppercase;
+}
+
+.how-to-list{
+  margin:0 0 14px;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+
+.how-to-list li{
+  margin:5px 0;
+}
+
+#howToVideo{
+  display:block;
+  width:100%;
+  max-height:220px;
+  border-radius:14px;
+  object-fit:cover;
+  background:#0E0805;
+  border:1px solid rgba(232,220,200,.14);
+  box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
 #centerRight h3{
   margin:4px 0 10px;
   font-size:14px; letter-spacing:.12em; color: var(--violet-2); text-transform: uppercase;
@@ -558,6 +595,22 @@ input[type="checkbox"]:disabled{ opacity:.6; cursor:not-allowed; }
         <button id="btnRecords" class="menuButton">Leaderboard</button>
         <a href="https://www.secret-society.cc/" target="_blank" class="buyButton">Secret Society Website</a>
       </div>
+
+      <div id="howToPlayCard" class="card">
+        <h2>HOW TO PLAY:</h2>
+        <ol class="how-to-list">
+          <li>Move around the map using edge scroll, WASD / Arrow Keys, or right-click drag.</li>
+          <li>Collect keys to score points.</li>
+          <li>Pick up clocks to recharge your flashlight.</li>
+          <li>Survive the 60-second challenge and climb the leaderboard.</li>
+        </ol>
+
+        <video id="howToVideo" autoplay muted loop playsinline preload="metadata">
+          <source src="how-to-play.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
       <div id="centerRight" class="card">
         <h3>MOVEMENT SETTINGS</h3>
         <label><input type="checkbox" id="cbEdgePanMain" checked> Edge scroll</label>
